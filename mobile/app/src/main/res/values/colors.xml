@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- High-contrast palette picked for outdoor readability. -->
+    <color name="primary">#0B5FFF</color>
+    <color name="primary_dark">#063FAA</color>
+    <color name="on_primary">#FFFFFF</color>
+
+    <color name="accent">#FFB300</color>
+    <color name="on_accent">#000000</color>
+
+    <color name="bg">#FFFFFF</color>
+    <color name="surface">#F4F6FA</color>
+    <color name="on_surface">#111418</color>
+
+    <color name="state_pending">#8C8C8C</color>
+    <color name="state_inprogress">#0B5FFF</color>
+    <color name="state_done">#1F8B24</color>
+    <color name="state_failed">#D7263D</color>
+</resources>

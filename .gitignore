@@ -1,0 +1,29 @@
+prompt.md
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE/editor
+.idea/
+*.iml
+.vscode/
+
+# Logs
+*.log
+
+# Backend (Maven / Spring Boot)
+backend/target/
+
+# Mobile (Android / Gradle)
+mobile/.gradle/
+mobile/build/
+mobile/**/build/
+mobile/local.properties
+mobile/.idea/
+mobile/*.iml
+mobile/app/release/
+mobile/captures/
+mobile/.externalNativeBuild/
+mobile/.cxx/
+Projet_GestionLivraison26-1.pdf

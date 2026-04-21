@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Supervision Livraisons</string>
+
+    <!-- Login -->
+    <string name="login_title">Connexion</string>
+    <string name="login_hint">Identifiant</string>
+    <string name="password_hint">Mot de passe</string>
+    <string name="login_button">Se connecter</string>
+
+    <!-- Controller -->
+    <string name="ctrl_home_title">Espace Contrôleur</string>
+    <string name="ctrl_today">Livraisons du jour</string>
+    <string name="ctrl_search">Recherche / Période</string>
+    <string name="ctrl_dashboard">Tableau de bord</string>
+    <string name="ctrl_messaging">Messagerie</string>
+
+    <!-- Driver -->
+    <string name="drv_home_title">Ma tournée du jour</string>
+    <string name="drv_detail_title">Détails de la livraison</string>
+    <string name="drv_call_client">Appeler le client</string>
+    <string name="drv_open_maps">Ouvrir sur Google Maps</string>
+    <string name="drv_mark_delivered">Marquer Livrée</string>
+    <string name="drv_mark_not_delivered">Marquer Non livrée</string>
+    <string name="drv_reason_hint">Raison (obligatoire)</string>
+    <string name="drv_send_emergency">Alerte urgente au contrôleur</string>
+
+    <!-- Common -->
+    <string name="logout">Déconnexion</string>
+    <string name="refresh">Actualiser</string>
+    <string name="send">Envoyer</string>
+</resources>

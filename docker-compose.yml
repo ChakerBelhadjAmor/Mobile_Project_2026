@@ -1,0 +1,48 @@
+# docker-compose.yml — Supervision des Livraisons
+#
+# Launches two services:
+#   - postgres: PostgreSQL 16 with a NAMED VOLUME (`postgres_data`) bound to
+#               /var/lib/postgresql/data so rows survive container restarts.
+#   - backend:  the Spring Boot API built from ./backend via a multi-stage
+#               Dockerfile (Maven build stage + slim JRE runtime stage).
+
+services:
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: livraison-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB:       livraisondb
+      POSTGRES_USER:     postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      # Named volume — persists data across `docker-compose down` / restarts.
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d livraisondb"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  backend:
+    build:
+      context: ./backend
+    container_name: livraison-backend
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL:      jdbc:postgresql://postgres:5432/livraisondb
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    ports:
+      - "8080:8080"
+
+volumes:
+  # Declared here so docker-compose manages its lifecycle independently of
+  # the containers — removing a container does not wipe the database.
+  postgres_data:
