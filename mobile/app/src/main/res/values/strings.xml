@@ -25,6 +25,12 @@
     <string name="drv_reason_hint">Raison (obligatoire)</string>
     <string name="drv_send_emergency">Alerte urgente au contrôleur</string>
 
+    <!-- Controller bottom nav labels (short) -->
+    <string name="nav_today">Aujourd\'hui</string>
+    <string name="nav_search">Recherche</string>
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_messaging">Messages</string>
+
     <!-- Common -->
     <string name="logout">Déconnexion</string>
     <string name="refresh">Actualiser</string>

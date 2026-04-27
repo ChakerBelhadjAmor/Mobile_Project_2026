@@ -2,17 +2,16 @@ package com.supervision.livraison.ui.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.supervision.livraison.LivraisonApp;
+import com.supervision.livraison.R;
 import com.supervision.livraison.databinding.ActivityControllerHomeBinding;
 import com.supervision.livraison.ui.LoginActivity;
 
-/**
- * Controller landing screen — five actions matching the specification:
- * today's deliveries, period search, dashboard, messaging, logout.
- */
 public class ControllerHomeActivity extends AppCompatActivity {
 
     private ActivityControllerHomeBinding b;
@@ -25,16 +24,36 @@ public class ControllerHomeActivity extends AppCompatActivity {
 
         b.tvGreeting.setText("Bonjour, " + LivraisonApp.get().session().getFullName());
 
-        b.btnToday    .setOnClickListener(v -> openList(true));
-        b.btnSearch   .setOnClickListener(v -> openList(false));
-        b.btnDashboard.setOnClickListener(v -> startActivity(new Intent(this, DashboardActivity.class)));
-        b.btnMessaging.setOnClickListener(v -> startActivity(new Intent(this, ControllerMessagingActivity.class)));
+        b.bottomNav.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.nav_today) {
+                openList(true);
+            } else if (id == R.id.nav_search) {
+                openList(false);
+            } else if (id == R.id.nav_dashboard) {
+                startActivity(new Intent(this, DashboardActivity.class));
+            } else if (id == R.id.nav_messaging) {
+                startActivity(new Intent(this, ControllerMessagingActivity.class));
+            }
+            return false;
+        });
+    }
 
-        b.btnLogout.setOnClickListener(v -> {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_controller, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_logout) {
             LivraisonApp.get().session().clear();
             startActivity(new Intent(this, LoginActivity.class));
             finish();
-        });
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void openList(boolean todayOnly) {

@@ -1,6 +1,8 @@
 package com.supervision.livraison.ui.controller;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,6 +34,8 @@ public class DeliveriesListActivity extends AppCompatActivity {
     private LivraisonAdapter adapter;
     private LiveData<List<Livraison>> current;
     private Observer<List<Livraison>> observer;
+    private final Handler poller = new Handler(Looper.getMainLooper());
+    private Runnable pollTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +74,26 @@ public class DeliveriesListActivity extends AppCompatActivity {
             if (todayOnly) bind(vm.today());
             else bind(vm.search(text(b.etFrom), text(b.etTo), text(b.etEtat), null, parseLong(text(b.etNoCde))));
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        boolean todayOnly = getIntent().getBooleanExtra("todayOnly", true);
+        pollTask = new Runnable() {
+            @Override public void run() {
+                if (todayOnly) bind(vm.today());
+                else bind(vm.search(text(b.etFrom), text(b.etTo), text(b.etEtat), null, parseLong(text(b.etNoCde))));
+                poller.postDelayed(this, 10_000);
+            }
+        };
+        poller.post(pollTask);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        poller.removeCallbacks(pollTask);
     }
 
     private void bind(LiveData<List<Livraison>> next) {
