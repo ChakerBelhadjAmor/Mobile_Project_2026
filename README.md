@@ -194,11 +194,10 @@ is enough latency for the "driver on tour" scenario.
 
 ---
 
-## 6. Tools used
+## 6. Tech stack (badges)
 
-- **Spring Boot 3.2**, Spring Data JPA, Hibernate
-- **PostgreSQL 16** (Alpine) via Docker
-- **Docker / docker-compose** (multi-stage build, named volume)
-- **Android Studio**, AndroidX (AppCompat, Material 3, Lifecycle, Room)
-- **Retrofit 2** + Gson converter + OkHttp logging interceptor
-- **Lombok** on the backend to trim boilerplate
+| Area | Technologies |
+|------|--------------|
+| Backend | ![Java](https://img.shields.io/badge/Java-ED8B00?logo=java&logoColor=white) ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?logo=springboot&logoColor=white) ![Spring Data JPA](https://img.shields.io/badge/Spring%20Data%20JPA-6DB33F?logo=spring&logoColor=white) ![Hibernate](https://img.shields.io/badge/Hibernate-59666C?logo=hibernate&logoColor=white) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white) ![Maven](https://img.shields.io/badge/Maven-C71A36?logo=apachemaven&logoColor=white) |
+| Mobile | ![Android](https://img.shields.io/badge/Android-3DDC84?logo=android&logoColor=white) ![Android Studio](https://img.shields.io/badge/Android%20Studio-3DDC84?logo=androidstudio&logoColor=white) ![Material 3](https://img.shields.io/badge/Material%203-757575?logo=materialdesign&logoColor=white) ![AndroidX](https://img.shields.io/badge/AndroidX-3DDC84?logo=android&logoColor=white) ![Room](https://img.shields.io/badge/Room-3DDC84?logo=android&logoColor=white) ![Retrofit](https://img.shields.io/badge/Retrofit-0095D5) ![OkHttp](https://img.shields.io/badge/OkHttp-000000) ![Gradle](https://img.shields.io/badge/Gradle-02303A?logo=gradle&logoColor=white) |
+| DevOps | ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white) ![Docker Compose](https://img.shields.io/badge/Docker%20Compose-2496ED?logo=docker&logoColor=white) |
